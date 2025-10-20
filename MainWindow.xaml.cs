@@ -183,6 +183,10 @@ namespace 提示词查看wpf3
         }
         private string  findthenewestpath()
         {
+            if (!Directory.Exists(@"E:\ComfyUI-aki-v1.7\ComfyUI\output"))
+            {
+                return ("c:\\");
+            }
             var dirs=Directory.GetDirectories(@"E:\ComfyUI-aki-v1.7\ComfyUI\output")
                 .Select(d=>new DirectoryInfo(d)).OrderByDescending(d=>d.LastWriteTimeUtc).ToArray();
             return (dirs[0].FullName);
